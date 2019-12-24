@@ -32,7 +32,7 @@ else:
     origfilename = names[0]
     newfilename = '.\\installer\\Sigil-{}-{}-build_num-{}-Setup.exe'.format(appveyor_branch, appveyor_commit[:7], appveyor_build_number)
 
-print('orgifilename: {} newfilename: {}'.format(origfilename, newfilename))
+print('origfilename: {} newfilename: {}'.format(origfilename, newfilename))
 shutil.copy2(origfilename, newfilename)
 
 folder_name = datetime.date.today()
@@ -48,6 +48,7 @@ list_command = ['gdrive',
 list_proc = subprocess.run(list_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
 print('here!')
 print('{}'.format(list_proc.returncode))
+print(list_proc.stdout)
 if list_proc.returncode == 0 and len(list_proc.stdout):
     gparent = list_proc.stdout.split()[0]
     print('here2!')
