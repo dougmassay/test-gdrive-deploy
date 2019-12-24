@@ -46,6 +46,7 @@ list_command = ['gdrive',
          ]
 list_proc = subprocess.run(list_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
 print('here!')
+print('{}'.format(list_proc.returncode))
 if list_proc.returncode == 0 and len(list_proc.stdout):
     gparent = list_proc.stdout.split()[0]
     print('here2!')
