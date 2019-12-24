@@ -44,7 +44,7 @@ list_command = ['gdrive',
           '--query',
           'trashed = false and mimeType = \'application/vnd.google-apps.folder\' and \'{}\' in parents and name = \'{}\''.format(gparent, folder_name),
          ]
-print(''.join(list_command))
+
 list_proc = subprocess.run(list_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
 print('here!')
 print('{}'.format(list_proc.returncode))
@@ -62,7 +62,7 @@ else:
                   '{}'.format(gparent),
                   '{}'.format(folder_name),
                   ]
-    print(mk_command)
+
     mk_proc = subprocess.run(mk_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
     print('{}'.format(mk_proc.returncode))
     if mk_proc.returncode == 0 and mk_proc.stdout.strip():
