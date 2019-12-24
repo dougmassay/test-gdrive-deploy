@@ -44,6 +44,7 @@ list_command = ['gdrive',
           '--query',
           'trashed = false and mimeType = \'application/vnd.google-apps.folder\' and \'{}\' in parents and name = \'{}\''.format(gparent, folder_name),
          ]
+print(list_command)
 list_proc = subprocess.run(list_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
 
 if list_proc.returncode == 0 and len(list_proc.stdout):
