@@ -14,10 +14,10 @@ configuration: Release
 platform:
 - x64
 
-install:
-  - choco install gdrive
+https://github.com/gdrive-org/gdrive/releases/download/2.1.0/gdrive-windows-x64.exe
 
 environment:
+  DOWNLOAD: https://github.com/gdrive-org/gdrive/releases/download/2.1.0/gdrive-windows-x64.exe
   GDRIVE_REFRESH_TOKEN:
     secure: +J2q/4lkiBXik5Ttvt06vpNiWBjNIXx+jFnYw1rOR9sLkyksyXGj+NeNKQB8kPwE
   GDRIVE_DIR:
@@ -38,11 +38,12 @@ build_script:
     cd build
     mkdir installer
     cp ..\Sigil-1.0.0-Windows-x64-Setup.exe installer\Sigil-1.0.0-Windows-x64-Setup.exe
-    gdrive version
+    curl.exe -L -o gdrive.exe %DOWNLOAD%
+    c:\project\test\build\gdrive.exe version
  
 on_success:
 - cmd: |-
     python --version
-    gdrive version
+    c:\project\test\build\gdrive.exe version
     python ..\ci_scripts\testdeploy.py
 
