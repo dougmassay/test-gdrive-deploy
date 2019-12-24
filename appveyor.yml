@@ -44,5 +44,5 @@ on_success:
 - cmd: |-
     python --version
     gdrive version
-    python ../ci_scripts/testdeploy.py
+    python ..\ci_scripts\testdeploy.py
 
