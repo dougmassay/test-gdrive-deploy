@@ -14,8 +14,6 @@ configuration: Release
 platform:
 - x64
 
-https://github.com/gdrive-org/gdrive/releases/download/2.1.0/gdrive-windows-x64.exe
-
 environment:
   DOWNLOAD: https://github.com/gdrive-org/gdrive/releases/download/2.1.0/gdrive-windows-x64.exe
   GDRIVE_REFRESH_TOKEN:
