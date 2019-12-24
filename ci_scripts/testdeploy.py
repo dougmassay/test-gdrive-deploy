@@ -45,7 +45,7 @@ list_command = ['gdrive',
           'trashed = false and mimeType = \'application/vnd.google-apps.folder\' and \'{}\' in parents and name = \'{}\''.format(gparent, folder_name),
          ]
 
-list_proc = subprocess.run(list_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=False)
+list_proc = subprocess.run(list_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
 print('here!')
 print('{}'.format(list_proc.returncode))
 print(list_proc.stdout)
@@ -94,7 +94,9 @@ if info is not None:
                   '{}'.format(info),
                    ]
     inf_proc = subprocess.run(inf_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
+    print('here7!')
     if inf_proc.returncode == 0:
+        print('here8!')
         inf_dic = {k.split(':')[0].strip():k.split(': ')[1] for k in inf_proc.stdout.splitlines()}
         print('Download {} from {}'.format(newfilename, inf_dic["DownloadUrl"]))
 else:
