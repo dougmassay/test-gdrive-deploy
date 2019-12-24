@@ -1,0 +1,48 @@
+version: '1.0.0-{build}'
+
+branches:
+  only:
+  - master
+  
+clone_folder: c:\project\test
+
+image:
+- Visual Studio 2017
+
+configuration: Release
+
+platform:
+- x64
+
+install:
+  - choco install gdrive
+
+environment:
+  GDRIVE_REFRESH_TOKEN:
+    secure: +J2q/4lkiBXik5Ttvt06vpNiWBjNIXx+jFnYw1rOR9sLkyksyXGj+NeNKQB8kPwE
+  GDRIVE_DIR:
+    secure: e/trZFJnPzo9saqwWWn6+E3ZPoItqflSviT92eeH3Qk76GuEHrPk9DrcG1bh3SNX
+  MY_SECURE_TEST:
+    secure: duvtD9/+RsWyuWsecmXapA==
+  PYTHON: C:\Python37-x64
+
+only_commits:
+  files:
+    - CMakeLists.txt
+    - appveyor.yml
+
+build_script:
+- cmd: |-
+    mkdir build
+    python -m pip install --upgrade pip
+    cd build
+    mkdir installer
+    cp ..\Sigil-1.0.0-Windows-x64-Setup.exe ..\installer\Sigil-1.0.0-Windows-x64-Setup.exe
+ 
+deploy_script:
+- ps: >-
+    if(-not $env:appveyor_pull_request_number) {
+        Get-Location
+        python --version
+        python ../ci_scripts/testdeploy.py
+    }
