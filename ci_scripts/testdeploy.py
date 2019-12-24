@@ -59,8 +59,9 @@ else:
                   '{}'.format(gparent),
                   '{}'.format(folder_name),
                   ]
+    print(mk_command)
     mk_proc = subprocess.run(mk_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
-
+    print('{}'.format(mk_proc.returncode))
     if mk_proc.returncode == 0 and mk_proc.stdout.strip():
         print('here4!')
         print('Created new \'{}\' folder'.format(folder_name))
