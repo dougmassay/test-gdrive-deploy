@@ -44,12 +44,13 @@ list_command = ['gdrive',
           '--query',
           'trashed = false and mimeType = \'application/vnd.google-apps.folder\' and \'{}\' in parents and name = \'{}\''.format(gparent, folder_name),
          ]
-print(list_command)
 list_proc = subprocess.run(list_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
-
+print('here!')
 if list_proc.returncode == 0 and len(list_proc.stdout):
     gparent = list_proc.stdout.split()[0]
+    print('here2!')
 else:
+    print('here3!')
     mk_command = ['gdrive',
                   '--refresh-token',
                   '{}'.format(grefresh_token),
@@ -61,9 +62,10 @@ else:
     mk_proc = subprocess.run(mk_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
 
     if mk_proc.returncode == 0 and mk_proc.stdout.strip():
+        print('here4!')
         print('Created new \'{}\' folder'.format(folder_name))
         gparent = mk_proc.stdout.split()[1]
-
+print('here5!')
 up_command = ['gdrive',
               '--refresh-token',
               '{}'.format(grefresh_token),
@@ -73,7 +75,7 @@ up_command = ['gdrive',
               '{}'.format(newfilename)
               ]
 up_proc = subprocess.run(up_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
-
+print('here6!')
 info = None
 if up_proc.returncode == 0:
     print('Uploaded {} to \'{}\' folder'.format(newfilename, folder_name))
