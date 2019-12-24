@@ -21,7 +21,7 @@ if sys.platform.lower().startswith('darwin'):
 else:
     appveyor_branch = os.path.expandvars('$APPVEYOR_REPO_BRANCH')
     appveyor_commit = os.path.expandvars('$APPVEYOR_REPO_COMMIT')
-    appveyor_build_number = os.path.expandvars('$APPVEYOR_BUILD_VERSION')
+    appveyor_build_number = os.path.expandvars('$APPVEYOR_BUILD_NUMBER')
     print('Current directory {}'.format(os.getcwd()))
     print('Script directory {}'.format(os.path.dirname(os.path.realpath(__file__))))
     print('secure var {}'.format(test_secure))

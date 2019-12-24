@@ -39,9 +39,11 @@ build_script:
     curl.exe -L -o gdrive.exe %DOWNLOAD%
     c:\project\test\build\gdrive.exe version
  
-on_success:
-- cmd: |-
-    python --version
-    c:\project\test\build\gdrive.exe version
-    python ..\ci_scripts\testdeploy.py
+deploy_script:
+- ps: >-
+    if(-not $env:appveyor_pull_request_number) {
+        python --version
+        c:\project\test\build\gdrive.exe version
+        python ..\ci_scripts\testdeploy.py
+    }
 
