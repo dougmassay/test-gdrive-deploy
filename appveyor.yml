@@ -45,5 +45,6 @@ deploy_script:
     if(-not $env:appveyor_pull_request_number) {
         Get-Location
         python --version
+        gdrive version
         python ../ci_scripts/testdeploy.py
     }
