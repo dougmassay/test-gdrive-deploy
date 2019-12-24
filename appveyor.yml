@@ -33,11 +33,11 @@ only_commits:
 
 build_script:
 - cmd: |-
+    set PATH=%PYTHON%;%PYTHON%\Scripts;%PATH%
     mkdir build
-    python -m pip install --upgrade pip
     cd build
     mkdir installer
-    cp ..\Sigil-1.0.0-Windows-x64-Setup.exe ..\installer\Sigil-1.0.0-Windows-x64-Setup.exe
+    cp ..\Sigil-1.0.0-Windows-x64-Setup.exe installer\Sigil-1.0.0-Windows-x64-Setup.exe
  
 deploy_script:
 - ps: >-
