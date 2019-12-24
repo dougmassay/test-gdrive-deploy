@@ -52,6 +52,7 @@ if list_proc.returncode == 0 and len(list_proc.stdout):
     print('here2!')
 else:
     print('here3!')
+    print(list_proc.stderr)
     mk_command = ['gdrive',
                   '--refresh-token',
                   '{}'.format(grefresh_token),
